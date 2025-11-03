@@ -4,7 +4,7 @@ def total_salary(path):
             lines = [el.split(",") for el in file.readlines()]
             lines = [el.strip("\n") for line in lines for el in line]
     except FileNotFoundError:
-        return "Не вдалося знайти файл з анекдотами."
+        return "Не вдалося знайти файл з заробітною платою."
     
     workers = []
     salaries = []
@@ -20,6 +20,6 @@ def total_salary(path):
         total_salary += el
 
     total_workers = len(workers)
-    average_salary = int(total_salary/total_workers)
+    average_salary = float(total_salary/total_workers)
 
     return (total_salary, average_salary)

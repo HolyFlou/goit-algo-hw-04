@@ -4,7 +4,7 @@ def get_cats_info(path):
             lines = [el.split(",") for el in file.readlines()]
             lines = [el.strip("\n") for line in lines for el in line]
     except FileNotFoundError:
-        return "Не вдалося знайти файл з анекдотами."
+        return "Не вдалося знайти файл з інформацією про котів."
 
     ids = []
     names = []

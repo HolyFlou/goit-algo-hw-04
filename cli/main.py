@@ -23,6 +23,18 @@ def change_contact(args, contacts):
         return "You need to write more arguments."
 def all_contact(name, phone):
     return f"Name: {name}, Phone: {phone}"
+def phone_contact(name, contacts):
+    if len(name) == 0:
+        return "You need to write name"
+    elif not len(contacts):
+        return "Contacts are empty"
+    else:
+        for names in contacts.keys():
+            if name[0] == names:
+                return f"{name[0]}, Phone: {contacts[name[0]]}"
+            else:
+                return f"There is no {name[0]} in contacts."
+    
 
 def main():
     contacts = {}
@@ -46,6 +58,8 @@ def main():
             else:
                 for name, phone in contacts.items():
                     print(all_contact(name, phone))
+        elif command == "phone":
+            print(phone_contact(args, contacts))
         else:
             print("Invalid command.")
 
