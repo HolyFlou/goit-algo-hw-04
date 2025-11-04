@@ -21,8 +21,13 @@ def change_contact(args, contacts):
             return "Contact is not in array."
     except ValueError:
         return "You need to write more arguments."
-def all_contact(name, phone):
-    return f"Name: {name}, Phone: {phone}"
+def all_contact(contacts):
+    if not len(contacts):
+        return "Contacts are empty"
+    else:
+        for name, phone in contacts.items():
+            print(f"Name: {name}, Phone: {phone}")
+        return "There is all contacts that you have"
 def phone_contact(name, contacts):
     if len(name) == 0:
         return "You need to write name"
@@ -32,8 +37,7 @@ def phone_contact(name, contacts):
         for names in contacts.keys():
             if name[0] == names:
                 return f"{name[0]}, Phone: {contacts[name[0]]}"
-            else:
-                return f"There is no {name[0]} in contacts."
+        return f"There is no {name[0]} in contacts."
     
 
 def main():
@@ -53,11 +57,7 @@ def main():
         elif command == "change":
             print(change_contact(args, contacts))
         elif command == "all":
-            if not len(contacts):
-                print("Contacts are empty")
-            else:
-                for name, phone in contacts.items():
-                    print(all_contact(name, phone))
+            print(all_contact(contacts))
         elif command == "phone":
             print(phone_contact(args, contacts))
         else:
