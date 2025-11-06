@@ -3,6 +3,7 @@ def parse_input(user_input):
     cmd = cmd.strip().lower()
     return cmd, *args
 
+
 def add_contact(args, contacts):
     try:
         name, phone = args
@@ -10,6 +11,7 @@ def add_contact(args, contacts):
         return "Contact added."
     except ValueError:
         return "You need to write more arguments."
+
 
 def change_contact(args, contacts):
     try:
@@ -21,22 +23,28 @@ def change_contact(args, contacts):
             return "Contact is not in array."
     except ValueError:
         return "You need to write more arguments."
+    
+
 def all_contact(contacts):
-    if not len(contacts):
+    if not contacts:
         return "Contacts are empty"
-    else:
-        for name, phone in contacts.items():
-            print(f"Name: {name}, Phone: {phone}")
-        return "There is all contacts that you have"
+    
+    lines = []
+    for name, phone in contacts.items():
+        lines.append(f"Name: {name}, Phone: {phone}")
+    
+    return "\n".join(lines)
+
+
+
 def phone_contact(name, contacts):
     if len(name) == 0:
         return "You need to write name"
     elif not len(contacts):
         return "Contacts are empty"
     else:
-        for names in contacts.keys():
-            if name[0] == names:
-                return f"{name[0]}, Phone: {contacts[name[0]]}"
+        if name[0] in contacts:
+            return f"{name[0]}, Phone: {contacts[name[0]]}"
         return f"There is no {name[0]} in contacts."
     
 
